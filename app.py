@@ -4,6 +4,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi.responses import ORJSONResponse
+from fastapi.responses import PlainTextResponse
+
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -13,6 +15,14 @@ templates = Jinja2Templates(directory="templates")
 # configuration goes here
 # maybe you import a model.py file containing your database spec
 # do other things???
+
+@app.get('/robots.txt', response_class=PlainTextResponse)
+def robots():
+    data = """User-agent: *\nDisallow: /"""
+    return data
+
+
+
 
 @app.get("/", response_class=HTMLResponse)
 async def home():
