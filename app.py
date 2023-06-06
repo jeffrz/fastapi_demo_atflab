@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -21,7 +22,8 @@ async def home():
 async def topic_vis( request: Request, param: str ):
     # uses a template to insert variables into some html using jinja
     # composes the file, and sends it to the user
-    return templates.TemplateResponse("temp1.htm", {"request": request, "urlval": param, "value": "hello"})
+    secret_key = os.environ.get('TOPIC_API_KEY')
+    return templates.TemplateResponse("temp1.htm", {"request": request, "urlval": param, "value": secret_key})
 
 @app.get("/is_even", response_class=ORJSONResponse)
 async def iseven( request: Request, num: int):
