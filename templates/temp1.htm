@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>Details</title>
+    <link href="{{ url_for('static', path='/custom-style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container larger">
+      <h3>Test Notes</h3>
+      <p>
+        Value set in the py code: {{ value }}
+      </p>
+      <p>
+        Value provided in the URL: {{ urlval }}
+      </p>
+  </div>
+</body>
+</html>
