@@ -119,6 +119,11 @@
     
     <script id="notes1">
     
+    d3.json("/cereals").then( (data) => {
+      console.log("hooray, we have cereals", data)
+    });
+    
+    
     
     // Containers and center markers
     const circleBlur = d3.select("svg#plot-blur g.circle-container");
